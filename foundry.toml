@@ -1,0 +1,46 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+solc-version = "0.8.19"
+optimizer = true
+optimizer-runs = 10_000_000
+verbosity = 4               # -vvvv
+ffi = true                  # security warning
+
+fs_permissions = [
+    { access = "read-write", path = "./deployments.json" },
+    { access = "read", path = "./measurement.txt" },
+]
+
+[rpc_endpoints]
+ethereum = "${ETH_MAINNET_URL}"
+ethereumGoerli = "${ETH_GOERLI_TESTNET_URL}"
+
+arbitrum = "${ARBITRUM_MAINNET_URL}"
+arbitrumGoerli = "${ARBITRUM_TESTNET_URL}"
+
+base = "${BASE_MAINNET_URL}"
+baseGoerli = "${BASE_TESTNET_URL}"
+
+core = "${COREDAO_MAINNET_URL}"
+coreGoerli = "${COREDAO_TESTNET_URL}"
+
+optimism = "${OPTIMISM_MAINNET_URL}"
+optimismGoerli = "${OPTIMISM_TESTNET_URL}"
+
+[etherscan]
+ethereum = { key = "${ETHERSCAN_MAINNET_API_KEY}", url = "https://api.etherscan.io/api" }
+ethereumGoerli = { key = "${ETHERSCAN_MAINNET_API_KEY}", url = "https://api-goerli.etherscan.io/api" }
+
+arbitrum = { key = "${ARBISCAN_API_KEY}", url = "https://api.arbiscan.io/api" }
+arbitrumGoerli = { key = "${ARBISCAN_API_KEY}", url = "https://api-goerli.arbiscan.io/api" }
+
+base = { key = "${BASESCAN_API_KEY}", url = "https://api.basescan.org/api" }
+baseGoerli = { key = "${BASESCAN_API_KEY}", url = "https://api-goerli.basescan.org/api" }
+
+core = { key = "${COREDAO_API_KEY}", url = "https://openapi.coredao.org/api" }
+coreGoerli = { key = "${COREDAO_TESTNET_API_KEY}", url = "https://api.test.btcs.network/api" }
+
+optimism = { key = "${OPTIMISM_API_KEY}", url = "https://api-optimistic.etherscan.io/api" }
+optimismGoerli = { key = "${OPTIMISM_API_KEY}", url = "https://api-goerli-optimistic.etherscan.io/api" }

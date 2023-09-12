@@ -1,0 +1,37 @@
+{
+  "name": "evm-coin-flip-typescript",
+  "description": "Switchboard function in ts",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "build:old": "rimraf dist && node esbuild.js",
+    "build": "rimraf dist && esbuild --bundle --target=node18 --platform=node --outfile=dist/index.js src/index.ts --minify --sourcemap=inline",
+    "test": "jest",
+    "lint": "eslint src/**/*.ts",
+    "clean": "rimraf node_modules dist",
+    "fix": "eslint --fix src/**/*.ts"
+  },
+  "dependencies": {
+    "@switchboard-xyz/evm.js": "3.12.31",
+    "ethers": "^5.7.2"
+  },
+  "devDependencies": {
+    "@switchboard-xyz/eslint-config": "^0.1.9",
+    "@types/chai": "^4.3.6",
+    "@types/jest": "^29.5.4",
+    "@types/node": "^18.17.15",
+    "@typescript-eslint/parser": "^6.6.0",
+    "chai": "^4.3.8",
+    "esbuild": "^0.19.2",
+    "eslint": "^8.49.0",
+    "jest": "^29.6.4",
+    "rimraf": "^5.0.1",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=7.0.0"
+  }
+}

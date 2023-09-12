@@ -1,0 +1,37 @@
+{
+  "arbitrumGoerli": {
+    "name": "arbitrumGoerli",
+    "id": 421613,
+    "entryFee": 1000000000,
+    "functionId": "0xEa82e0879D501CB865a4bc19f84bA4984a49C3be",
+    "contractAddress": "0x9B377Beee7f8b8A2Cfc6ed0Fc5cab14701109fAD"
+  },
+  "coreGoerli": {
+    "name": "coreGoerli",
+    "id": 1115,
+    "entryFee": 1000000000,
+    "functionId": "0xe5710C0f914e565174dEc92225Af40C9375A3311",
+    "contractAddress": "0xC607d4f94040a8116e130A0ea349E11927c89784"
+  },
+  "optimismGoerli": {
+    "name": "optimismGoerli",
+    "id": 420,
+    "entryFee": 1000000000,
+    "functionId": "0xF406C4f23A8A006Ed72a59b591d323F1743285bc",
+    "contractAddress": "0x6c10f69CD6d40D8c8413bd3b598bdb00f3e1F2b8"
+  },
+  "baseGoerli": {
+    "name": "baseGoerli",
+    "id": 84531,
+    "entryFee": 1000000000,
+    "functionId": "0xD2Ae4f126DA4D5Aa626e2277f6261E8889188019",
+    "contractAddress": "0xD2e9F43505131606beea19CCd808bFff6Cc587Ad"
+  },
+  "localhost": {
+    "name": "localhost",
+    "id": 31337,
+    "entryFee": 1000000000,
+    "functionId": "0x0000000000000000000000000000000000000000",
+    "contractAddress": "0x0000000000000000000000000000000000000000"
+  }
+}

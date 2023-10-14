@@ -134,7 +134,6 @@ publish-rust-function: check_docker_env
 	DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64 --pull -f ./switchboard-function/rust/Dockerfile -t ${DOCKERHUB_IMAGE_NAME}:latest -t ${DOCKERHUB_IMAGE_NAME}:rust --push ./switchboard-function/rust/
 
 measurement-rust-function: check_docker_env
-	docker pull --platform=linux/amd64 -q ${DOCKERHUB_IMAGE_NAME}:rust
 	@docker run -d --platform=linux/amd64 -q --name=my-switchboard-function ${DOCKERHUB_IMAGE_NAME}:rust
 	@docker cp my-switchboard-function:/measurement.txt ./measurement.txt
 	@echo -n 'MrEnclve: '
@@ -149,7 +148,6 @@ publish-typescript-function: check_docker_env
 	DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64 --pull -f ./switchboard-function/typescript/Dockerfile -t ${DOCKERHUB_IMAGE_NAME}:typescript --push ./switchboard-function/typescript/
 
 measurement-typescript-function: check_docker_env
-	docker pull --platform=linux/amd64 -q ${DOCKERHUB_IMAGE_NAME}:typescript
 	@docker run -d --platform=linux/amd64 -q --name=my-switchboard-function ${DOCKERHUB_IMAGE_NAME}:typescript
 	@docker cp my-switchboard-function:/measurement.txt ./measurement.typescript.txt
 	@echo -n 'MrEnclve: '

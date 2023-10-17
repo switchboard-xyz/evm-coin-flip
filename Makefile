@@ -39,10 +39,10 @@ endif
 # endif
 
 check_docker_env:
-ifeq ($(strip $(DOCKERHUB_IMAGE_NAME)),)
-	$(error DOCKERHUB_IMAGE_NAME is not set)
+ifeq ($(strip $(DOCKER_IMAGE_NAME)),)
+	$(error DOCKER_IMAGE_NAME is not set)
 else
-	@echo DOCKERHUB_IMAGE_NAME: ${DOCKERHUB_IMAGE_NAME}
+	@echo DOCKER_IMAGE_NAME: ${DOCKER_IMAGE_NAME}
 endif
 
 ####################################################
@@ -128,13 +128,13 @@ set-mr-enclave-all: check_priv_key_env measurement-rust-function
 ####################################################
 
 build-rust-function: check_docker_env
-	DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64 --pull -f ./switchboard-function/rust/Dockerfile -t ${DOCKERHUB_IMAGE_NAME}:rust --load ./switchboard-function/rust/
+	DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64 --pull -f ./switchboard-function/rust/Dockerfile -t ${DOCKER_IMAGE_NAME}:rust --load ./switchboard-function/rust/
 
 publish-rust-function: check_docker_env
-	DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64 --pull -f ./switchboard-function/rust/Dockerfile -t ${DOCKERHUB_IMAGE_NAME}:latest -t ${DOCKERHUB_IMAGE_NAME}:rust --push ./switchboard-function/rust/
+	DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64 --pull -f ./switchboard-function/rust/Dockerfile -t ${DOCKER_IMAGE_NAME}:latest -t ${DOCKER_IMAGE_NAME}:rust --push ./switchboard-function/rust/
 
 measurement-rust-function: check_docker_env
-	@docker run -d --platform=linux/amd64 -q --name=my-switchboard-function ${DOCKERHUB_IMAGE_NAME}:rust
+	@docker run -d --platform=linux/amd64 -q --name=my-switchboard-function ${DOCKER_IMAGE_NAME}:rust
 	@docker cp my-switchboard-function:/measurement.txt ./measurement.txt
 	@echo -n 'MrEnclve: '
 	@cat measurement.txt
@@ -142,13 +142,13 @@ measurement-rust-function: check_docker_env
 	@docker rm my-switchboard-function > /dev/null
 
 build-typescript-function: check_docker_env
-	DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64 --pull -f ./switchboard-function/typescript/Dockerfile -t ${DOCKERHUB_IMAGE_NAME}:typescript --load ./switchboard-function/typescript/
+	DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64 --pull -f ./switchboard-function/typescript/Dockerfile -t ${DOCKER_IMAGE_NAME}:typescript --load ./switchboard-function/typescript/
 
 publish-typescript-function: check_docker_env
-	DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64 --pull -f ./switchboard-function/typescript/Dockerfile -t ${DOCKERHUB_IMAGE_NAME}:typescript --push ./switchboard-function/typescript/
+	DOCKER_BUILDKIT=1 docker buildx build --platform linux/amd64 --pull -f ./switchboard-function/typescript/Dockerfile -t ${DOCKER_IMAGE_NAME}:typescript --push ./switchboard-function/typescript/
 
 measurement-typescript-function: check_docker_env
-	@docker run -d --platform=linux/amd64 -q --name=my-switchboard-function ${DOCKERHUB_IMAGE_NAME}:typescript
+	@docker run -d --platform=linux/amd64 -q --name=my-switchboard-function ${DOCKER_IMAGE_NAME}:typescript
 	@docker cp my-switchboard-function:/measurement.txt ./measurement.typescript.txt
 	@echo -n 'MrEnclve: '
 	@cat measurement.typescript.txt

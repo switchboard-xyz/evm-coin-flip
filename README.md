@@ -63,7 +63,7 @@ Then, add the env variables to your shell:
 
 - **PRIVATE_KEY**: a hex encoded string of a wallet with active funds on the
   network you are interacting with
-- **DOCKERHUB_IMAGE_NAME**: optional, the name of your dockerhub container where
+- **DOCKER_IMAGE_NAME**: optional, the name of your dockerhub container where
   we will deploy your Switchboard Function. You may use
   `switchboardlabs/evm-coin-flip` if you dont plan on making any changes.
 

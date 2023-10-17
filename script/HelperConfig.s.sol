@@ -110,7 +110,7 @@ contract HelperConfig is Script {
         if (functionId == address(0)) {
             console.log("[deploy] Failed to find an existing Switchboard Function - creating a new one ...");
 
-            string memory container = vm.envOr("DOCKERHUB_IMAGE_NAME", DEFAULT_CONTAINER);
+            string memory container = vm.envOr("DOCKER_IMAGE_NAME", DEFAULT_CONTAINER);
 
             sb.attestationQueues(attestationQueueId); // verify this exists
 

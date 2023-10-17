@@ -16,7 +16,7 @@ contract CreateFunction is Script {
 
     constructor() {
         config = new HelperConfig();
-        container = vm.envOr("DOCKERHUB_IMAGE_NAME", DEFAULT_CONTAINER);
+        container = vm.envOr("DOCKER_IMAGE_NAME", DEFAULT_CONTAINER);
     }
 
     function run() external {
